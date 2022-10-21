@@ -3,7 +3,17 @@ Find Close Price Stock Data of a given company between given start and end date.
 
 ## How to Use?
 
-### In project folder
+### Fill the database with nse_data.csv
+
+### In project folder, run the following commands
     - npm install
-    - make a .env file and connect database
     - nodemon run server
+    and make a .env file to connect with the database
+
+### In the client folder, run the following commands
+    - npm install
+    - npm start
+    
+Reach out to the following url: http://localhost:3000/stock-data/home
+    
+
