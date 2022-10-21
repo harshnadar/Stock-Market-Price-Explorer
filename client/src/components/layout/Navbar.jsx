@@ -12,12 +12,13 @@ const Navbar = () => {
             'Content-Type': 'application/json',
         }})
         .then(res => {
-            console.log(res.data);
+            console.log(res);
             if(res.data.length === 0){
                 alert("Pleast enter the right symbol");
                 window.location = `/Home`;
             }
             else{
+                // console.log(res.data);
                 window.location = `/stock-data/${symbol}`;
             }
         })
