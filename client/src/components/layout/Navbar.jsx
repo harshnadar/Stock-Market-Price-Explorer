@@ -10,6 +10,7 @@ const Navbar = () => {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     
+    console.log(startDate);
 
     const getDateInString = (date) => {
         date.setTime(date.getTime() - date.getTimezoneOffset() * 60000);
@@ -35,7 +36,7 @@ const Navbar = () => {
     }
 
     return <div>
-        <div className="navbar-topnav">
+        {/* <div className="navbar-topnav">
             <a className="navbar-active" href="#home">Home</a>
             <div>
                 <DatePicker
@@ -52,6 +53,27 @@ const Navbar = () => {
             <div className='navbar-search'>
                 <input type="text" placeholder="Search Company Symbol.." onChange = {(evt) => setSymbol(evt.target.value)} value={symbol} />
                 <span onClick={() => submitClicked()}>Search</span>
+            </div>
+        </div> */}
+        <div class="topnav">
+            <a class="active" href="#home">Home</a>
+            <a>
+                <DatePicker
+                    selectsRange={true}
+                    startDate={startDate}
+                    endDate={endDate}
+                    onChange={(update) => {
+                        setDateRange(update);
+                    }}
+                    withPortal
+                    placeholderText='Select Date Range'
+                />
+            </a>
+            <div class="search-container">
+                {/* <form > */}
+                    <input type="text" placeholder="Search Company Symbol.." onChange = {(evt) => setSymbol(evt.target.value)} value={symbol}/>
+                    <button type="submit" onClick={() => submitClicked()}>Search</button>
+                {/* </form> */}
             </div>
         </div>
     </div>;
