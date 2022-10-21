@@ -7,15 +7,16 @@ table {
     /* padding: 10px; */
     border: 2px solid rgb(34, 80, 139);
     width: 800px;
-    height: 100px;
     margin-left: 10px;
     display: table;
 }
 
 th {
     border-bottom: 1px solid black;
+    height: 10px;
 }
 
 td {
     text-align: center;
+    height: 10px;
 }
