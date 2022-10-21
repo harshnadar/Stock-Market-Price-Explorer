@@ -3,13 +3,16 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './StockData.css';
 
+
 export const StockData = () => {
 
     const [stockData, setStockData] = useState([]);
     const { symbol } = useParams();
+    const  { startDate } = useParams();
+    const {endDate} = useParams();
     
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/stock-price-data/${symbol}`,{headers: {
+        axios.get(`http://localhost:8000/api/stock-price-data/${symbol}/${startDate}/${endDate}`,{headers: {
             'Content-Type': 'application/json',
         }})
         .then(res => {
