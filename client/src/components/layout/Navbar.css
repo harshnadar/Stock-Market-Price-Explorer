@@ -28,6 +28,8 @@ body {
 .topnav a.active {
   background-color: #2196F3;
   color: white;
+  height: 80px;
+  text-align: match-parent;
 }
 
 .topnav .search-container {
@@ -36,7 +38,7 @@ body {
 
 .topnav input[type=text] {
   padding: 6px;
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 17px;
   border: none;
 }
@@ -44,8 +46,8 @@ body {
 .topnav .search-container button {
   float: right;
   padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
+  margin-top: 10px;
+  margin-right: 13px;
   background: #ddd;
   font-size: 17px;
   border: none;
@@ -53,7 +55,7 @@ body {
 }
 
 .topnav .search-container button:hover {
-  background: #ccc;
+  background: rgb(5, 153, 212);
 }
 
 @media screen and (max-width: 600px) {

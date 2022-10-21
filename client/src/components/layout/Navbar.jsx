@@ -36,25 +36,6 @@ const Navbar = () => {
     }
 
     return <div>
-        {/* <div className="navbar-topnav">
-            <a className="navbar-active" href="#home">Home</a>
-            <div>
-                <DatePicker
-                    selectsRange={true}
-                    startDate={startDate}
-                    endDate={endDate}
-                    onChange={(update) => {
-                        setDateRange(update);
-                    }}
-                    withPortal
-                    placeholderText='Select Date Range'
-                />
-            </div>
-            <div className='navbar-search'>
-                <input type="text" placeholder="Search Company Symbol.." onChange = {(evt) => setSymbol(evt.target.value)} value={symbol} />
-                <span onClick={() => submitClicked()}>Search</span>
-            </div>
-        </div> */}
         <div class="topnav">
             <a class="active" href="#home">Home</a>
             <a>
@@ -70,10 +51,10 @@ const Navbar = () => {
                 />
             </a>
             <div class="search-container">
-                {/* <form > */}
+                <form >
                     <input type="text" placeholder="Search Company Symbol.." onChange = {(evt) => setSymbol(evt.target.value)} value={symbol}/>
                     <button type="submit" onClick={() => submitClicked()}>Search</button>
-                {/* </form> */}
+                </form>
             </div>
         </div>
     </div>;

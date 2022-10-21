@@ -1,7 +1,15 @@
+h1 {
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
 table {
-    border: 2px solid forestgreen;
+    /* padding: 10px; */
+    border: 2px solid rgb(34, 80, 139);
     width: 800px;
-    height: 200px;
+    height: 100px;
+    margin-left: 10px;
+    display: table;
 }
 
 th {
