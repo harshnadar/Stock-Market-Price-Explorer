@@ -1,20 +1,17 @@
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
-//Import the pages
-// import Navbar from "./components/Navbar";
 import {StockData} from "./components/pages/StockData";
 import {Home} from "./components/pages/Home";
-import Navbar from "./components/layout/Navbar";
+import "bootstrap/dist/css/bootstrap.css";
+import "./components/layout/Navbar.css";
 
 function App() {
   return (
     <div className="App">
-      
       <Router>
-        <Navbar/>
         <Routes>
           <Route exact path="/stock-data/:symbol/:startDate/:endDate" element={<StockData/>} />
-          <Route exact path="/home" element={<Home/>} />
+          <Route exact path="/" element={<Home/>} />
         </Routes>
       </Router>
     </div>

@@ -20,10 +20,9 @@ router.get('/:company/:start_date/:end_date', async (req, res) => {
 
         for(let date = new Date(start_date); date<= new Date(end_date); date.setDate(date.getDate()+1)){
             let query = `SELECT TIMESTAMP, CLOSE FROM nse_data WHERE SYMBOL="${symbol}" AND TIMESTAMP="${date_formatter(date)}"`;
-            let r = await (await db).execute(query);
-            console.log
-            if(r[0].length)
-                ans.push(r[0][0]);
+            let temp = await (await db).execute(query);
+            if(temp[0].length)
+                ans.push(temp[0][0]);
         }
         res.status(200).send(ans.reverse());
     } catch (err) {

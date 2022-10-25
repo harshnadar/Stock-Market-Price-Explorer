@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './StockData.css';
-
+import Header from '../layout/Navbar';
+import {
+    Card,
+    CardHeader,
+    CardBody,
+    CardTitle,
+    Table,
+    Row,
+    Col
+  } from "reactstrap";
 
 export const StockData = () => {
 
@@ -23,23 +31,42 @@ export const StockData = () => {
 
     return (
         <div>
-            <h1>{symbol}</h1>
-            {console.log(stockData)}
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Closing Price</th>
-                </tr>
-                {stockData.map((dayData) =>{
-                    return(
-                        <tr>
-                            <td>{dayData.TIMESTAMP}</td>
-                            <td>{dayData.CLOSE}</td>
-                        </tr>
-                    );
-                })}
-            </table>
-            
+            <Header/>
+            <Row>
+          <Col md="6">
+            <Card>
+              <CardHeader>
+                <CardTitle tag="h4">.</CardTitle>
+              </CardHeader>
+              <CardHeader>
+                <CardTitle tag="h4">{symbol.toUpperCase()}</CardTitle>
+              </CardHeader>
+              <CardBody>
+                <Table striped>
+                  <thead className="text-primary">
+                    <tr>
+                      <th>Date</th>
+                      <th className="text-right">Close Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                        stockData.map((dayData) => {
+                            return(
+                                <tr>
+                                <td className='text-left'>{dayData.TIMESTAMP}</td>
+                                <td className='text-right'>{dayData.CLOSE}</td>
+                            </tr>
+                            )
+                        })
+                    }
+                  </tbody>
+                </Table>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        
         </div>
     );
 }

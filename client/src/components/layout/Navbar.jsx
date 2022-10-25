@@ -1,37 +1,55 @@
+import React, {useState} from "react";
 import axios from 'axios';
-import React, { useState } from 'react';
-import './Navbar.css';
-import DatePicker from "react-datepicker";
+import {
+  Collapse,
+  Navbar,
+  Container,
+  InputGroup,
+  InputGroupAddon,
+  Input
+} from "reactstrap";
 import "react-datepicker/dist/react-datepicker.css";
 import dateFormatter from '../utils/DateFormatter';
+import DatePicker from "react-datepicker";
 
-const Navbar = () => {
-    const [symbol, setSymbol] = useState('');
-    const [dateRange, setDateRange] = useState([null, null]);
-    const [startDate, endDate] = dateRange;
 
-    const submitClicked = () => {
-        axios.get(`http://localhost:8000/api/stock-price-data/${symbol}/${dateFormatter(startDate)}/${dateFormatter(endDate)}`,{headers: {
-            'Content-Type': 'application/json',
-        }})
-        .then(res => {
-            console.log(res);
-            if(res.data.length === 0){
-                alert("Pleast enter the correct company symbol");
-                window.location = `/Home`;
-            }
-            else{
-                window.location = `/stock-data/${symbol}/${dateFormatter(startDate)}/${dateFormatter(endDate)}`;
-            }
-        })
-        .catch(err => console.log("Error" + err.response))
-    }
+function Header(props) {
+  
+  const [symbol, setSymbol] = useState('');
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
 
-    return <div>
-        <div class="topnav">
-            <a class="active" href="#home">Home</a>
-            <a>
-                <DatePicker
+
+  const submitClicked = () => {
+    axios.get(`http://localhost:8000/api/stock-price-data/${symbol}/${dateFormatter(startDate)}/${dateFormatter(endDate)}`,{headers: {
+        'Content-Type': 'application/json',
+    }})
+    .then(res => {
+        console.log(res);
+        if(res.data.length === 0){
+            alert("Pleast enter the correct company symbol");
+            window.location = `/Home`;
+        }
+        else{
+            window.location = `/stock-data/${symbol}/${dateFormatter(startDate)}/${dateFormatter(endDate)}`;
+        }
+    })
+    .catch(err => console.log("Error" + err.response))
+  }
+
+  return (
+    <Navbar
+      color={
+        "dark"
+      }
+      expand="lg"
+      className={
+        "navbar-absolute fixed-top "
+      }
+    >
+      <Container fluid>
+        <div className="navbar-wrapper">
+          <DatePicker
                     selectsRange={true}
                     startDate={startDate}
                     endDate={endDate}
@@ -41,15 +59,22 @@ const Navbar = () => {
                     withPortal
                     placeholderText='Select Date Range'
                 />
-            </a>
-            <div class="search-container">
-                {/* <form > */}
-                    <input type="text" placeholder="Search Company Symbol.." onChange = {(evt) => setSymbol(evt.target.value)} value={symbol}/>
-                    <button type="submit" onClick={() => submitClicked()}>Search</button>
-                {/* </form> */}
-            </div>
         </div>
-    </div>;
-};
+        <Collapse navbar className="justify-content-end">
+          <form>
+            <InputGroup className="no-border">
+              <Input placeholder="Search..." onChange = {(evt) => setSymbol(evt.target.value)} value={symbol}/>
+              <InputGroupAddon addonType="append">
+                  <div>
+                  <button class="btn btn-primary" type="button" onClick={() => submitClicked()}>Search</button>
+                  </div>
+              </InputGroupAddon>
+            </InputGroup>
+          </form>
+        </Collapse>
+      </Container>
+    </Navbar>
+  );
+}
 
-export default Navbar;
+export default Header;
