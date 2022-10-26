@@ -27,14 +27,17 @@ function Header(props) {
     .then(res => {
         console.log(res);
         if(res.data.length === 0){
-            alert("Pleast enter the correct company symbol");
-            window.location = `/Home`;
+            alert("Pleast enter the correct company Symbol or enter correct Dates");
+            window.location = `/`;
         }
         else{
             window.location = `/stock-data/${symbol}/${dateFormatter(startDate)}/${dateFormatter(endDate)}`;
         }
     })
-    .catch(err => console.log("Error" + err.response))
+    .catch(err => {
+      alert("Pleast enter the correct company Symbol or enter correct Dates");
+      console.log("Error" + err.response)
+    }) 
   }
 
   return (
